@@ -5,18 +5,20 @@ from sqlalchemy.engine.mock import MockConnection
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.future import Engine
 from sqlalchemy.orm import sessionmaker
+from .config import settings
 
-# CONNECTION STRING -- SQLLITE
+# CONNECTION STRING -- SQLITE
 # SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 # CONNECTION STRING -- POSTGRES
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 # CONNECTION STRING - MYSQL
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://stud:sai1ram2@192.168.68.115:33061/stud"
+# SQLALCHEMY_DATABASE_URL = "mysql+pymysql://stud:sai1ram2@192.168.68.115:33061/stud"
+SQLALCHEMY_DATABASE_URL = settings.DATABASE_URL
+print(SQLALCHEMY_DATABASE_URL)
+# ENGINE FOR SQLITE
+# engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 
-#ENGINE FOR SQLLITE
-#engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-
-#ENGINE FOR OTHER DATABASEES
+# ENGINE FOR OTHER DATABASES
 engine: Union[Union[MockConnection, Engine], Any] = create_engine(SQLALCHEMY_DATABASE_URL)
 
 SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
