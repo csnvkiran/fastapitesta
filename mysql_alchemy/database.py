@@ -12,7 +12,7 @@ from .config import settings
 # CONNECTION STRING -- POSTGRES
 # SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
 # CONNECTION STRING - MYSQL
-# SQLALCHEMY_DATABASE_URL = "mysql+pymysql://stud:sai1ram2@192.168.68.115:33061/stud"
+
 SQLALCHEMY_DATABASE_URL = settings.DATABASE_URL
 print(SQLALCHEMY_DATABASE_URL)
 # ENGINE FOR SQLITE
